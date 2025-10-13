@@ -1,3 +1,4 @@
+import 'package:demo/Column_Practice.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,24 +7,6 @@ void main() {
 
 class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Colors.amber,
-          child: Column(
-            children: [
-              Container(
-                color: Colors.black,
-                child: Row(
-                  children: [
-                    Container(height: 100, width: 100, color: Colors.red),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return MaterialApp(home: ColumnPractice());
   }
 }
