@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ColumnPractice extends StatelessWidget {
+class listBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -23,14 +22,14 @@ class ColumnPractice extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    color: const Color.fromARGB(255, 228, 27, 184),
+                    color: Colors.pink,
                     height: 30,
                     width: double.infinity,
                   ),
                 ],
               ),
-              color: Colors.amber,
-              margin: EdgeInsets.only(bottom: 10),
+              // color: Colors.amber,
+              margin: EdgeInsets.only(bottom: 20),
             );
           },
         ),
