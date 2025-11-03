@@ -3,10 +3,10 @@ import 'package:pract/Column_Practice.dart';
 import 'package:pract/listBuilder.dart';
 
 void main() {
-  runApp(Demo());
+  runApp(Column_Practice());
 }
 
-class Demo extends StatelessWidget {
+class Column_Practice extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(home: listBuilder());
   }

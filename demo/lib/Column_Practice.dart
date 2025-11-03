@@ -2,38 +2,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ColumnPractice extends StatelessWidget {
+  List data = [
+    {"name": "shubham", "age": 28},
+    {"name": "sanket", "age": 26},
+    {"name": "Rajat", "age": 25},
+  ];
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Container(
-              height: 300,
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.red,
-                    child: Row(children: [CircleAvatar(radius: 20)]),
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                  ),
-                  Container(
-                    color: const Color.fromARGB(255, 228, 27, 184),
-                    height: 30,
-                    width: double.infinity,
-                  ),
-                ],
-              ),
-              color: Colors.amber,
-              margin: EdgeInsets.only(bottom: 10),
-            );
-          },
-        ),
+      body: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          return Container(
+            height: 300,
+            color: const Color.fromARGB(255, 174, 166, 141),
+            margin: EdgeInsets.only(bottom: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(data[index]["name"]),
+                Text("${data[index]["age"]}"),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
