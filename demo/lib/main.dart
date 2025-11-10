@@ -1,6 +1,5 @@
 // ...existing code...
-import 'package:demo/Column_Practice.dart';
-import 'package:demo/insta.dart';
+import 'package:demo/HomePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,8 +8,9 @@ void main() {
 
 class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
+    print("in demo classs build method");
     return MaterialApp(
-      home: insta(), // use the renamed widget
+      home: Homepage(), // use the renamed widget
     );
   }
 }
