@@ -1,4 +1,4 @@
-import 'package:demo/MainApp.dart';
+import 'package:demo/HomePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,6 +7,6 @@ void main() {
 
 class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainApp());
+    return MaterialApp(home: Homepage());
   }
 }

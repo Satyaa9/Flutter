@@ -7,37 +7,32 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
+List screens = [
+  Center(child: Text("home screen")),
+  Center(child: Text("notification screen")),
+];
+
 class _HomepageState extends State<Homepage> {
-  Color boxColor = Colors.amber;
-
-  void changeColor() {
-    setState(() {
-      if (boxColor == Colors.amber) {
-        boxColor = Colors.red;
-      } else {
-        boxColor = Colors.amber;
-      }
-    });
-  }
-
+  int selecteIndex = 0;
   @override
   Widget build(BuildContext context) {
     print("in homepage build method");
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 200,
-              width: 200,
-              color: boxColor,
-              margin: EdgeInsets.only(bottom: 10),
-            ),
-            TextButton(onPressed: changeColor, child: Text("click")),
-          ],
-        ),
+      body: screens[selecteIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selecteIndex,
+        onTap: (index) {
+          setState(() {
+            selecteIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notification_add),
+            label: "notification",
+          ),
+        ],
       ),
     );
   }
