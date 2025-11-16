@@ -1,3 +1,5 @@
+import 'package:demo/HeroPage.dart';
+import 'package:demo/Notification.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -7,10 +9,7 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-List screens = [
-  Center(child: Text("home screen")),
-  Center(child: Text("notification screen")),
-];
+List screens = [Heropage(), NotificationPage()];
 
 class _HomepageState extends State<Homepage> {
   int selecteIndex = 0;
@@ -25,6 +24,7 @@ class _HomepageState extends State<Homepage> {
           setState(() {
             selecteIndex = index;
           });
+          print(index);
         },
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
