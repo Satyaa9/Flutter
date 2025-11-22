@@ -43,6 +43,46 @@
 //   }
 // }
 
+// import 'package:flutter/material.dart';
+
+// class Homepage extends StatefulWidget {
+//   const Homepage({super.key});
+
+//   @override
+//   State<Homepage> createState() => _HomepageState();
+// }
+
+// class _HomepageState extends State<Homepage> {
+//   var num = 0;
+
+//   void increasenum() {
+//     setState(() {
+//       num++;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     print("in build method");
+//     return Scaffold(
+//       body: Container(
+//         width: double.infinity,
+//         color: Colors.amber,
+//         height: 500,
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text("num : ${num}"),
+//             TextButton(onPressed: increasenum, child: Text("click")),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+import 'package:demo/Heropage.dart';
+import 'package:demo/Notificationpage.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -52,30 +92,29 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
+List Screens = [Heropage(), Notificationpage()];
+
 class _HomepageState extends State<Homepage> {
-  var num = 0;
-
-  void increasenum() {
-    setState(() {
-      num++;
-    });
-  }
-
+  int Selectedintedex = 0;
   @override
   Widget build(BuildContext context) {
-    print("in build method");
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        color: Colors.amber,
-        height: 500,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("num : ${num}"),
-            TextButton(onPressed: increasenum, child: Text("click")),
-          ],
-        ),
+      body: Screens[Selectedintedex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: Selectedintedex,
+        onTap: (index) {
+          setState(() {
+            Selectedintedex = index;
+          });
+          print(index);
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notification_add),
+            label: "Notification",
+          ),
+        ],
       ),
     );
   }
