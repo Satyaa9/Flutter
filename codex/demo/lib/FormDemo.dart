@@ -16,12 +16,12 @@ class _FormDemoState extends State<FormDemo> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(0.8),
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: nameController,
               autofocus: true,
               decoration: InputDecoration(
-                label: Text("Enter Name"),
+                label: Text("enter name"),
                 border: OutlineInputBorder(),
               ),
             ),
