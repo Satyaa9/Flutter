@@ -1,4 +1,5 @@
-import 'package:demo/HomePage.dart';
+// ...existing code...
+import 'package:demo/FormDemo.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,6 +8,13 @@ void main() {
 
 class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(home: Homepage());
+    print("in demo classs build method");
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: MaterialApp(
+        home: FormDemo(), // use the renamed widget
+      ),
+    );
   }
 }
+// ...existing code...
