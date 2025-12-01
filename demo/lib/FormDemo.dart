@@ -1,51 +1,56 @@
 import 'package:flutter/material.dart';
 
-class FormDemo extends StatefulWidget {
-  const FormDemo({super.key});
+class Formdemo extends StatefulWidget {
+  const Formdemo({super.key});
 
   @override
-  State<FormDemo> createState() => _FormDemoState();
+  State<Formdemo> createState() => _FormdemoState();
 }
 
-class _FormDemoState extends State<FormDemo> {
+class _FormdemoState extends State<Formdemo> {
+  final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
-  List data = [];
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Form Demo")),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: nameController,
-              autofocus: true,
-              decoration: InputDecoration(
-                label: Text("enter name"),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                data.add(nameController.text);
-              });
-              nameController.clear();
-            },
-            child: Text("Click"),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(data[index]),
-                  onTap: () {
-                    print(data[index]);
+          Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    autofocus: true,
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text("name"),
+                    ),
+                    validator: (value) {
+                      print("in validator $value");
+                      if (value!.isEmpty) {
+                        return "enter name";
+                      } else if (value != "shubham") {
+                        return "incorrect name";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    bool validated = _formKey.currentState!.validate();
+                    if (validated) {
+                      print(nameController.text);
+                    }
                   },
-                );
-              },
+                  child: Text("Login"),
+                ),
+              ],
             ),
           ),
         ],

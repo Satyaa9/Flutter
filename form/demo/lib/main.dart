@@ -10,7 +10,7 @@ class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
     print("in demo classs build method");
     return MaterialApp(
-      home: Formdemo(), // use the renamed widget
+      home: FormDemo(), // use the renamed widget
     );
   }
 }
