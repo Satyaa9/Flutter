@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -8,47 +11,37 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  @override
-  void initState() {
-    super.initState();
-    print("in init state");
+  List data = [];
+
+  fetchData() async {
+    var response = await http.get(
+      Uri.parse("https://jsonplaceholder.typicode.com/users"),
+    );
+    setState(() {
+      data = jsonDecode(response.body);
+    });
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print("in didchange....");
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchData();
   }
 
   @override
   Widget build(BuildContext context) {
     print("in build");
     return Scaffold(
-      body: Column(
-        children: [
-          Text("one"),
-          Text("two"),
-          ElevatedButton(
-            onPressed: () {
-              print("pressed");
-            },
-            child: Text("click"),
-          ),
-        ],
-      ),
+      body: data.isEmpty
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                return Text(data[index]["name"]);
+              },
+            ),
       appBar: AppBar(title: Text("hello"), backgroundColor: Colors.red),
     );
-  }
-
-  @override
-  void deactivate() {
-    super.deactivate();
-    print("in deativate");
-  }
-
-  @override
-  void dispose() {
-    print("in dispose...");
-    super.dispose();
   }
 }
