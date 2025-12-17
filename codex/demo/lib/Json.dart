@@ -14,7 +14,6 @@ class _JsonState extends State<Json> {
   void initState() {
     super.initState();
 
-    // ❌ No need for setState in initState
     data = [
       {"name": "shubham", "city": "pune"},
       {"name": "sanket", "city": "satara"},
